@@ -19,21 +19,21 @@ if (!defined('EAP_VERSION')) {
 }
 
 if (!defined('EAP_DIR')) {
-    define('ELEMENTOR_ADDONS_PACK_DIR', plugin_dir_path(__FILE__));
+    define('EAP_DIR', plugin_dir_path(__FILE__));
 }
 
 if (!defined('EAP_WIDGETS_DIR')) {
-    define('EAP_WIDGETS_DIR', ELEMENTOR_ADDONS_PACK_DIR . 'includes/widgets/');
+    define('EAP_WIDGETS_DIR', EAP_DIR . 'includes/widgets/');
 }
 
 if (!defined('EAP_CONTROLS_DIR')) {
-    define('EAP_CONTROLS_DIR', ELEMENTOR_ADDONS_PACK_DIR . 'includes/controls/');
+    define('EAP_CONTROLS_DIR', EAP_DIR . 'includes/controls/');
 }
 
 
 function elementor_test_addon()
 {
-    require_once ELEMENTOR_ADDONS_PACK_DIR . 'includes/class-elementor-addons-pack.php';
+    require_once EAP_DIR . 'includes/class-elementor-addons-pack.php';
     \Elementor_Addons_Pack\Elementor_Addons_Pack::get_instance();
 
 }
