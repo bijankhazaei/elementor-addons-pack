@@ -23,7 +23,7 @@ class Countries_Widget extends \Elementor\Widget_Base
 
     public function get_title(): string
     {
-        return __('Countries Widget', 'countries_widget');
+        return __('Countries Widget', 'elementor-addons-pack');
     }
 
     public function get_icon(): string
@@ -41,7 +41,7 @@ class Countries_Widget extends \Elementor\Widget_Base
         $this->start_controls_section(
             'countries_widget_section',
             [
-                'label' => __('Countries Widget', 'countries_widget'),
+                'label' => __('Countries Widget', 'elementor-addons-pack'),
                 'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -49,9 +49,9 @@ class Countries_Widget extends \Elementor\Widget_Base
         $this->add_control(
             'countries_widget_title',
             [
-                'label' => __('Title', 'countries_widget'),
+                'label' => __('Title', 'elementor-addons-pack'),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => __('Countries Widget', 'countries_widget'),
+                'default' => __('Countries Widget', 'elementor-addons-pack'),
             ]
         );
 

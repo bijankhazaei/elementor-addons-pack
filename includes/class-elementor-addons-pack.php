@@ -3,6 +3,7 @@
 namespace Elementor_Addons_Pack;
 
 use Elementor_Addons_Pack\Widgets\Countries_Widget;
+use Elementor_Addons_Pack\Widgets\ThreeJS_Widget;
 
 /**
  * Elementor Addons Pack.
@@ -79,8 +80,10 @@ final class Elementor_Addons_Pack
     public function register_widgets($widgets_manager)
     {
         require_once EAP_WIDGETS_DIR . 'Countries_Widget.php';
+        require_once EAP_WIDGETS_DIR . 'ThreeJS_Widget.php';
 
         $widgets_manager->register_widget_type(new Countries_Widget());
+        $widgets_manager->register_widget_type(new ThreeJS_Widget());
     }
 
     /**
