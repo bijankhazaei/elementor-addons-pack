@@ -22,6 +22,10 @@ if (!defined('EAP_DIR')) {
     define('EAP_DIR', plugin_dir_path(__FILE__));
 }
 
+if (!defined('EAP_URL')) {
+    define('EAP_URL', plugin_dir_url(__FILE__));
+}
+
 if (!defined('EAP_WIDGETS_DIR')) {
     define('EAP_WIDGETS_DIR', EAP_DIR . 'includes/widgets/');
 }

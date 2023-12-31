@@ -45,7 +45,7 @@ class Countries_Widget extends Widget_Base
             'countries_widget_section',
             [
                 'label' => __('Countries Widget', 'elementor-addons-pack'),
-                'tab' => Controls_Manager::TAB_CONTENT,
+                'tab'   => Controls_Manager::TAB_CONTENT,
             ]
         );
 
@@ -53,41 +53,136 @@ class Countries_Widget extends Widget_Base
         $this->add_control(
             'countries',
             [
-                'label' => __('Countries', 'elementor-addons-pack'),
-                'type' => Controls_Manager::REPEATER,
-                'fields' => [
+                'label'   => __('Countries', 'elementor-addons-pack'),
+                'type'    => Controls_Manager::REPEATER,
+                'fields'  => [
                     [
-                        'name' => 'country_name',
-                        'label' => __('Country Name', 'elementor-addons-pack'),
-                        'type' => Controls_Manager::TEXT,
+                        'name'    => 'country_name',
+                        'label'   => __('Country Name', 'elementor-addons-pack'),
+                        'type'    => Controls_Manager::TEXT,
                         'default' => __('Country Name', 'elementor-addons-pack'),
                     ],
                     [
-                        'name' => 'country_description',
-                        'label' => __('Country Description', 'elementor-addons-pack'),
-                        'type' => Controls_Manager::TEXTAREA,
+                        'name'    => 'country_description',
+                        'label'   => __('Country Description', 'elementor-addons-pack'),
+                        'type'    => Controls_Manager::TEXTAREA,
                         'default' => __('Country Description', 'elementor-addons-pack'),
                     ],
                     [
-                      'name' => 'country_link',
-                      'label' => __('Country Link', 'elementor-addons-pack'),
-                      'type' => Controls_Manager::URL,
-                      'default' => ['Country Link', 'elementor-addons-pack']
+                        'name'    => 'country_link',
+                        'label'   => __('Country Link', 'elementor-addons-pack'),
+                        'type'    => Controls_Manager::URL,
+                        'default' => ['Country Link', 'elementor-addons-pack']
                     ],
                     [
-                        'name' => 'country_flag',
-                        'label' => __('Country Flag', 'elementor-addons-pack'),
-                        'type' => Controls_Manager::MEDIA,
+                        'name'    => 'country_flag',
+                        'label'   => __('Country Flag', 'elementor-addons-pack'),
+                        'type'    => Controls_Manager::MEDIA,
                         'default' => [
                             'url' => Utils::get_placeholder_image_src(),
                         ],
                     ],
+                    [
+                        'name'    => 'country_id',
+                        'label'   => __('Country Id', 'elementor-addons-pack'),
+                        'type'    => Controls_Manager::SELECT2,
+                        'options' => [
+                            "AE" => "United Arab Emirates",
+                            "AL" => "Albania",
+                            "AM" => "Armenia",
+                            "AR" => "Argentina",
+                            "AT" => "Austria",
+                            "AU" => "Australia",
+                            "AZ" => "Azerbaijan",
+                            "BA" => "Bosnia and Herzegovina",
+                            "BD" => "Bangladesh",
+                            "BE" => "Belgium",
+                            "BG" => "Bulgaria",
+                            "BO" => "Bolivia",
+                            "BR" => "Brazil",
+                            "CA" => "Canada",
+                            "CH" => "Switzerland",
+                            "CL" => "Chile",
+                            "CN" => "China",
+                            "CO" => "Colombia",
+                            "CR" => "Costa Rica",
+                            "CY" => "Cyprus",
+                            "CZ" => "Czech Republic",
+                            "DE" => "Germany",
+                            "DK" => "Denmark",
+                            "DO" => "Dominican Republic",
+                            "EC" => "Ecuador",
+                            "EE" => "Estonia",
+                            "EG" => "Egypt",
+                            "ES" => "Spain",
+                            "FI" => "Finland",
+                            "FR" => "France",
+                            "GB" => "United Kingdom",
+                            "GE" => "Georgia",
+                            "GF" => "France",
+                            "GL" => "Greenland",
+                            "GR" => "Greece",
+                            "HR" => "Croatia",
+                            "HU" => "Hungary",
+                            "ID" => "Indonesia",
+                            "IE" => "Ireland",
+                            "IN" => "India",
+                            "IQ" => "Iraq",
+                            "IR" => "Iran",
+                            "IS" => "Iceland",
+                            "IT" => "Italy",
+                            "JO" => "Jordan",
+                            "JP" => "Japan",
+                            "KR" => "Republic of Korea",
+                            "KW" => "Kuwait",
+                            "LB" => "Lebanon",
+                            "LK" => "Sri Lanka",
+                            "LR" => "Liberia",
+                            "LT" => "Lithuania",
+                            "LU" => "Luxembourg",
+                            "LV" => "Latvia",
+                            "MD" => "Moldova",
+                            "ME" => "Montenegro",
+                            "MG" => "Madagascar",
+                            "MK" => "Macedonia",
+                            "ML" => "Mali",
+                            "MX" => "Mexico",
+                            "MY" => "Malaysia",
+                            "NL" => "Netherlands",
+                            "NO" => "Norway",
+                            "NZ" => "New Zealand",
+                            "OM" => "Oman",
+                            "PA" => "Panama",
+                            "PE" => "Peru",
+                            "PH" => "Philippines",
+                            "PL" => "Poland",
+                            "PR" => "Puerto Rico",
+                            "PT" => "Portugal",
+                            "PY" => "Paraguay",
+                            "QA" => "Qatar",
+                            "RO" => "Romania",
+                            "RS" => "Serbia",
+                            "RU" => "Russian Federation",
+                            "SA" => "Saudi Arabia",
+                            "SB" => "Solomon Islands",
+                            "SE" => "Sweden",
+                            "SI" => "Slovenia",
+                            "SK" => "Slovakia",
+                            "SZ" => "Swaziland",
+                            "TH" => "Thailand",
+                            "TJ" => "Tajikistan",
+                            "TR" => "Turkey",
+                            "TW" => "Taiwan",
+                            "UA" => "Ukraine",
+                            "US" => "United States",
+                        ],
+                    ]
                 ],
                 'default' => [
                     [
-                        'country_name' => __('Country Name', 'elementor-addons-pack'),
+                        'country_name'        => __('Country Name', 'elementor-addons-pack'),
                         'country_description' => __('Country Description', 'elementor-addons-pack'),
-                        'country_flag' => [
+                        'country_flag'        => [
                             'url' => Utils::get_placeholder_image_src(),
                         ],
                     ],
@@ -96,29 +191,6 @@ class Countries_Widget extends Widget_Base
         );
 
         $this->end_controls_section();
-
-        // start controls section for custom tab for get global map and other controls
-        $this->start_controls_section(
-            'countries_widget_global_map_section',
-            [
-                'label' => __('Global Map', 'elementor-addons-pack'),
-                'tab' => Controls_Manager::TAB_CONTENT,
-            ]
-        );
-
-        // get svg file for global map
-        $this->add_control(
-            'global_map_svg',
-            [
-                'label' => __('Global Map SVG', 'elementor-addons-pack'),
-                'type' => Controls_Manager::MEDIA,
-                'default' => [
-                    'url' => Utils::get_placeholder_image_src(),
-                ],
-            ]
-        );
-
-        $this->end_controls_section(); // end controls section for custom tab for get global map and other controls
     }
 
     protected function render(): void
@@ -126,26 +198,27 @@ class Countries_Widget extends Widget_Base
         $settings = $this->get_settings_for_display();
 
         $map = '';
-        if(file_exists(EAP_DIR.'/templates/map.php')) {
-            $map = file_get_contents(EAP_DIR.'/templates/map.php');
+        if (file_exists(EAP_DIR . '/templates/map.php')) {
+            $map = file_get_contents(EAP_DIR . '/templates/map.php');
         }
 
         ?>
         <div class="eap-countries-widget">
-            <?php echo $map; ?>
             <div class="eap-countries-widget-content">
                 <?php foreach ($settings['countries'] as $country) : ?>
                     <div class="eap-countries-widget-item">
                         <div class="eap-countries-widget-item-flag">
-                            <img src="<?php echo esc_url($country['country_flag']['url']); ?>" alt="<?php echo esc_attr($country['country_name']); ?>">
+                            <img src="<?php echo esc_url($country['country_flag']['url']); ?>"
+                                 alt="<?php echo esc_attr($country['country_name']); ?>">
                         </div>
                         <div class="eap-countries-widget-item-content">
                             <h3><?php echo esc_html($country['country_name']); ?></h3>
-                            <p><?php echo esc_html($country['country_description']); ?></p>
-                            <a href="<?php echo esc_url($country['country_link']['url']); ?>" target="<?php echo esc_attr($country['country_link']['is_external'] ? '_blank' : '_self'); ?>"><?php echo esc_html($country['country_link']['title']); ?></a>
                         </div>
                     </div>
                 <?php endforeach; ?>
+            </div>
+            <div class="map-container">
+                <?php echo $map; ?>
             </div>
         </div>
         <?php

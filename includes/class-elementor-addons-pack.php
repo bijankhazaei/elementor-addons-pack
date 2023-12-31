@@ -54,6 +54,9 @@ final class Elementor_Addons_Pack
     {
         add_action('elementor/elements/categories_registered', [$this, 'register_category']);
         add_action('elementor/widgets/widgets_registered', [$this, 'register_widgets']);
+        add_action( 'elementor/frontend/after_register_scripts', [$this, 'frontend_scripts'] );
+        add_action( 'elementor/frontend/after_enqueue_styles', [$this, 'frontend_stylesheets'] );
+
     }
 
     /**
@@ -104,4 +107,15 @@ final class Elementor_Addons_Pack
 //        $controls_manager->register();
     }
 
+    public function frontend_scripts(): void
+    {
+        wp_register_script( 'eap-main-js', EAP_URL.'/assets/main.js', array(), '1.0.0', true );
+        wp_enqueue_script( 'eap-main-js' );
+    }
+
+    public function frontend_stylesheets(): void
+    {
+        wp_register_style( 'eap-main-css', EAP_URL.'/assets/main.css', array(), '1.0.0', 'all' );
+        wp_enqueue_style( 'eap-main-css' );
+    }
 }

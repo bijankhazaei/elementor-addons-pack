@@ -1,0 +1,24 @@
+.eap-countries-widget {
+    direction: rtl;
+    display: flex;
+    flex-flow: row;
+    align-content: center;
+    .map-container {
+        display: flex;
+    }
+
+    .eap-countries-widget-content {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(7, 1fr);
+        grid-column-gap: 8px;
+        grid-row-gap: 8px;
+        .eap-countries-widget-item {
+            display: flex;
+            .eap-countries-widget-item-flag {
+                width: 20%;
+                align-items: end;
+            }
+        }
+    }
+}
