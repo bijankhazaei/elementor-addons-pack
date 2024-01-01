@@ -1,10 +1,9 @@
 .eap-countries-widget {
-    direction: rtl;
     display: flex;
     flex-flow: row;
     align-content: center;
+    position: relative;
     .map-container {
-        display: flex;
     }
 
     .eap-countries-widget-content {
@@ -14,11 +13,40 @@
         grid-column-gap: 8px;
         grid-row-gap: 8px;
         .eap-countries-widget-item {
+            &.active {
+                background-color: #eee;
+            };
+
             display: flex;
+            justify-content: center;
             .eap-countries-widget-item-flag {
                 width: 20%;
                 align-items: end;
+                padding: 0 5px
             }
+        }
+    }
+}
+
+#countries {
+     path {
+         &.active {
+             fill: #0A1A3D;
+         }
+     }
+}
+
+.country-modal {
+    display: none;
+    position: fixed;
+    background-color: #eee;
+    border: 5px solid #0A1A3D;
+    z-index: 1000;
+
+    .modal-flag {
+        width: 100px;
+        img {
+            width: 100%;
         }
     }
 }

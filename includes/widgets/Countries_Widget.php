@@ -206,20 +206,34 @@ class Countries_Widget extends Widget_Base
         <div class="eap-countries-widget">
             <div class="eap-countries-widget-content">
                 <?php foreach ($settings['countries'] as $country) : ?>
-                    <div class="eap-countries-widget-item">
+                    <div class="eap-countries-widget-item" data-country_id="<?php echo esc_attr($country['country_id']); ?>">
                         <div class="eap-countries-widget-item-flag">
                             <img src="<?php echo esc_url($country['country_flag']['url']); ?>"
                                  alt="<?php echo esc_attr($country['country_name']); ?>">
                         </div>
                         <div class="eap-countries-widget-item-content">
-                            <h3><?php echo esc_html($country['country_name']); ?></h3>
+                            <p><?php echo esc_html($country['country_name']); ?></p>
                         </div>
                     </div>
                 <?php endforeach; ?>
             </div>
-            <div class="map-container">
+            <div id="mapContainer" class="map-container">
                 <?php echo $map; ?>
             </div>
+        </div>
+        <div class="modals">
+            <?php foreach ($settings['countries'] as $country) : ?>
+                <div id="country_<?php echo esc_attr($country['country_id']); ?>" class="country-modal">
+                    <div class="modal-flag">
+                        <img src="<?php echo esc_url($country['country_flag']['url']); ?>"
+                             alt="<?php echo esc_attr($country['country_name']); ?>">
+                    </div>
+                    <div class="eap-countries-widget-item-content">
+                        <p><?php echo esc_html($country['country_name']); ?></p>
+                        <p><?php echo esc_html($country['country_description']); ?></p>
+                    </div>
+                </div>
+            <?php endforeach; ?>
         </div>
         <?php
     }
