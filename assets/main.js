@@ -6,6 +6,7 @@ window.addEventListener('elementor/frontend/init', (e) => {
 
     countries.forEach(country => {
         let countryId = null;
+
         country.addEventListener('mouseover', () => {
             countryId = country.getAttribute('data-country_id')
             country.classList.add('active');
@@ -14,28 +15,17 @@ window.addEventListener('elementor/frontend/init', (e) => {
 
             selectedPath = document.getElementById(countryId);
             selectedPath.classList.add('active');
+            const {x, y, width, height} = selectedPath.getBBox();
 
-            const mapWidth = mapContainer.offsetWidth;
-            const mapRect = mapContainer.getBoundingClientRect();
-            const selectedPathRect = selectedPath.getBoundingClientRect();
-
-
-            if (Math.abs(selectedPathRect.left - mapRect.left) < 50) {
-                modal.style.left = selectedPathRect.right + "px";
-                modal.style.right = "auto";
-                modal.style.top = selectedPathRect.top + "px";
+            if (x < mapContainer.offsetWidth / 4) {
+                modal.style.left = width + 50 + "px";
             } else {
-                modal.style.top = selectedPathRect.top + "px";
-                modal.style.right = Number.parseInt(selectedPathRect.left.toString()) + 10 + "px";
-                modal.style.left = "auto";
+                modal.style.left = x - 200 + "px";
             }
 
-
+            modal.style.top = y + "px";
             modal.style.display = "block";
             modal.style.opacity = "1";
-
-            console.log('modal right: ' + modal.style.right , 'modal left: ' + modal.style.left, 'path left' + selectedPathRect.left , 'path right' + selectedPathRect.right)
-            console.log('modal rec right:' + modal.getBoundingClientRect().right , 'modal rec left: ' + modal.getBoundingClientRect().left)
         })
 
         country.addEventListener('mouseout', () => {

@@ -219,21 +219,22 @@ class Countries_Widget extends Widget_Base
             </div>
             <div id="mapContainer" class="map-container">
                 <?php echo $map; ?>
-            </div>
-        </div>
-        <div class="modals">
-            <?php foreach ($settings['countries'] as $country) : ?>
-                <div id="country_<?php echo esc_attr($country['country_id']); ?>" class="country-modal">
-                    <div class="modal-flag">
-                        <img src="<?php echo esc_url($country['country_flag']['url']); ?>"
-                             alt="<?php echo esc_attr($country['country_name']); ?>">
-                    </div>
-                    <div class="eap-countries-widget-item-content">
-                        <p><?php echo esc_html($country['country_name']); ?></p>
-                        <p><?php echo esc_html($country['country_description']); ?></p>
-                    </div>
+                <div class="modals">
+                    <?php foreach ($settings['countries'] as $country) : ?>
+                        <div id="country_<?php echo esc_attr($country['country_id']); ?>" class="country-modal">
+                            <div class="modal-title">
+                                <img src="<?php echo esc_url($country['country_flag']['url']); ?>"
+                                     alt="<?php echo esc_attr($country['country_name']); ?>">
+                                <p><?php echo esc_html($country['country_name']); ?></p>
+                            </div>
+                            <div class="eap-countries-widget-item-content">
+
+                                <p><?php echo esc_html($country['country_description']); ?></p>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
                 </div>
-            <?php endforeach; ?>
+            </div>
         </div>
         <?php
     }
