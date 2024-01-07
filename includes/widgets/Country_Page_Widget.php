@@ -6,21 +6,21 @@ use Elementor\Core\Base\Document;
 use ElementorPro\Modules\QueryControl\Module as QueryControlModule;
 use ElementorPro\Plugin;
 
-class Country_News_Widget extends \Elementor\Widget_Base
+class Country_Page_Widget extends \Elementor\Widget_Base
 {
     public function get_name(): string
     {
-        return 'country-news-widget';
+        return 'country-page-widget';
     }
 
     public function get_title(): string
     {
-        return __('Country News Widget', 'elementor-addons-pack');
+        return __('Country Page Widget', 'elementor-addons-pack');
     }
 
     public function get_icon(): string
     {
-        return 'eicon-single-page';
+        return 'eicon-page-transition';
     }
 
 
@@ -53,20 +53,10 @@ class Country_News_Widget extends \Elementor\Widget_Base
             ]
         );
 
-        $this->add_control(
-            'title',
-            [
-                'label'       => __('Title', 'elementor-addons-pack'),
-                'type'        => \Elementor\Controls_Manager::TEXT,
-                'default'     => __('Country News', 'elementor-addons-pack'),
-                'placeholder' => __('Enter your title', 'elementor-addons-pack'),
-                'label_block' => true,
-            ]
-        );
-
         $document_types = Plugin::elementor()->documents->get_document_types([
             'show_in_library' => true,
         ]);
+
         // add list of elements repeater control
         $this->add_control(
             'countries_tab',
@@ -119,12 +109,9 @@ class Country_News_Widget extends \Elementor\Widget_Base
         $settings = $this->get_settings_for_display();
         $queryVar = $_GET['template'] ?? 0;
         ?>
-        <div class="eap-countries-news-widget">
-            <h3 class="title">
-                <?php echo $settings['title']; ?>
-            </h3>
-            <div id="navigationWrapper" class="navigation-wrapper"  data-sliders="<?php echo count($settings['countries_tab'])?>">
-                <div id="eapCountrySlider" class="keen-slider">
+        <div class="eap-countries-page-widget">
+            <div id="navigationWrapper" class="navigation-wrapper">
+                <div id="eapCountrySlider" class="keen-slider" data-sliders="<?php echo count($settings['countries_tab'])?>">
                     <?php $i = 1;
                     foreach ($settings['countries_tab'] as $country) :
                         $template_id = $country['template_selector'] ?? 0;
@@ -134,15 +121,14 @@ class Country_News_Widget extends \Elementor\Widget_Base
                         $countryObject = get_term_by('id', $country['country'], 'category');
 
                         $selected = $queryVar == $template_id ? 'selected' : '';
-                        $flag =  EAP_URL.'assets/flag.png';
+                        $flag = EAP_URL . 'assets/flag.png';
                         ?>
                         <div class="keen-slider__slide number-slide<?php echo $i . ' ' . $selected ?>"
                              data-selected="<?php echo $selected; ?>">
 
-                            <img src="<?php echo $flag; ?>"
-                                 alt="<?php echo $countryObject->name; ?>">
-
                             <a href="<?php echo home_url($wp->request); ?>/?template=<?php echo $template_id; ?>">
+                                <img src="<?php echo $flag; ?>"
+                                     alt="<?php echo $countryObject->name; ?>">
                                 <h2><?php echo $countryObject->name; ?></h2>
                             </a>
                         </div>
@@ -150,7 +136,7 @@ class Country_News_Widget extends \Elementor\Widget_Base
                         <?php $i++; endforeach; ?>
                 </div>
             </div>
-            <div class="eap-countries-news-widget-content">
+            <div class="eap-countries-page-widget-content">
                 <?php
                 // PHPCS - should not be escaped.
                 if ('publish' !== get_post_status($queryVar)) {

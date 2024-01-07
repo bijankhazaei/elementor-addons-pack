@@ -111,8 +111,26 @@ function navigation(slider) {
     })
 }
 
-new KeenSlider("#eapCountrySlider", {
-    loop: false,
-    rtl: true,
-    slides: {perView: 7.5, spacing: 0},
-}, [navigation])
+const eapCountrySliders = document.getElementById("eapCountrySlider").getAttribute('data-sliders')
+
+console.log(eapCountrySliders);
+
+if (eapCountrySliders > 1) {
+    let perPage = 7.5;
+
+    if( eapCountrySliders < 7 && eapCountrySliders > 3) {
+        perPage = Math.ceil(eapCountrySliders / 2)
+    }
+
+    if ( eapCountrySliders < 4) {
+        perPage = Math.ceil(eapCountrySliders / 1)
+    }
+
+    console.log(perPage);
+
+    new KeenSlider("#eapCountrySlider", {
+        loop: false,
+        rtl: true,
+        slides: {perView: perPage, spacing: 0},
+    }, [navigation])
+}
