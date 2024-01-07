@@ -64,14 +64,31 @@
 }
 
 .eap-countries-news-widget {
+    background-color: #344A86;
+    padding: 48px 0;
+    h3.title {
+        color: #fff;
+        font-size: 35px;
+        text-align: center;
+        margin-bottom: 48px;
+    }
+
     .keen-slider__slide {
         height: 82px;
         display: flex;
         align-items: center;
         justify-content: center;
-        background-color: #a1b6e8;
+        border-bottom: 5px solid rgba(225, 221, 214, 0.41);
+        flex-flow: column;
+
+        &.selected {
+            border-bottom: 5px solid #E1DDD6;
+        }
+
         h2 {
             color: #fff;
+            font-size: 16px;
+            font-weight: bold;
         }
     }
 

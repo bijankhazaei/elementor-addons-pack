@@ -45,7 +45,6 @@ function navigation(slider) {
     let wrapper, arrowLeft, arrowRight
 
     function markup(remove) {
-        wrapperMarkup(remove)
         arrowMarkup(remove)
     }
 
@@ -67,6 +66,8 @@ function navigation(slider) {
             return
         }
 
+        wrapper = document.getElementById('navigationWrapper')
+
         arrowLeft = createDiv("arrow arrow--left")
         arrowLeft.addEventListener("click", () => slider.next())
 
@@ -75,19 +76,6 @@ function navigation(slider) {
 
         wrapper.appendChild(arrowLeft)
         wrapper.appendChild(arrowRight)
-    }
-
-    function wrapperMarkup(remove) {
-        if (remove) {
-            const parent = wrapper.parentNode;
-            while (wrapper.firstChild)
-                parent.insertBefore(wrapper.firstChild, wrapper)
-            removeElement(wrapper)
-            return
-        }
-        wrapper = createDiv("navigation-wrapper")
-        slider.container.parentNode.appendChild(wrapper)
-        wrapper.appendChild(slider.container)
     }
 
     function updateClasses() {
@@ -126,5 +114,5 @@ function navigation(slider) {
 new KeenSlider("#eapCountrySlider", {
     loop: false,
     rtl: true,
-    slides: {perView: 7.5, spacing: 10},
+    slides: {perView: 7.5, spacing: 0},
 }, [navigation])
