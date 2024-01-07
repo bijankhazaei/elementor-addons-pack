@@ -203,16 +203,25 @@ class Countries_Widget extends Widget_Base
         }
 
         ?>
-        <div class="eap-countries-widget">
+        <div class="eap-countries-widget desktop">
             <div class="eap-countries-widget-content">
                 <?php foreach ($settings['countries'] as $country) : ?>
                     <div class="eap-countries-widget-item" data-country_id="<?php echo esc_attr($country['country_id']); ?>">
-                        <div class="eap-countries-widget-item-flag">
-                            <img src="<?php echo esc_url($country['country_flag']['url']); ?>"
-                                 alt="<?php echo esc_attr($country['country_name']); ?>">
+                        <div class="eap-countries-item-inner hover">
+                            <a href="<?php echo $country['country_link'] ?>"
+                               target="_blank"
+                               class="mouse-over-link">
+                                <?php echo sprintf(__('Read About %s' , 'countries'), esc_attr($country['country_name']))  ?>
+                            </a>
                         </div>
-                        <div class="eap-countries-widget-item-content">
-                            <p><?php echo esc_html($country['country_name']); ?></p>
+                        <div class="eap-countries-item-inner normal">
+                            <div class="eap-countries-widget-item-flag">
+                                <img src="<?php echo esc_url($country['country_flag']['url']); ?>"
+                                     alt="<?php echo esc_attr($country['country_name']); ?>">
+                            </div>
+                            <div class="eap-countries-widget-item-content">
+                                <p><?php echo esc_html($country['country_name']); ?></p>
+                            </div>
                         </div>
                     </div>
                 <?php endforeach; ?>
@@ -228,12 +237,43 @@ class Countries_Widget extends Widget_Base
                                 <p><?php echo esc_html($country['country_name']); ?></p>
                             </div>
                             <div class="eap-countries-widget-item-content">
-
                                 <p><?php echo esc_html($country['country_description']); ?></p>
                             </div>
                         </div>
                     <?php endforeach; ?>
                 </div>
+            </div>
+        </div>
+        <div class="eap-countries-widget mobile">
+            <div class="eap-countries-widget-content">
+                <?php foreach (array_chunk($settings['countries'], 2) as $twoCountry) { ?>
+                    <div class="eap-countries-widget-mobile-row">
+                    <?php foreach ($twoCountry as $country) : ?>
+                        <div class="eap-countries-widget-item eap-widget-item-mobile"
+                             data-country_id="<?php echo esc_attr($country['country_id']); ?>">
+                            <div class="eap-countries-item-inner">
+                                <div class="eap-countries-widget-item-flag">
+                                    <img src="<?php echo esc_url($country['country_flag']['url']); ?>"
+                                         alt="<?php echo esc_attr($country['country_name']); ?>">
+                                </div>
+                                <div class="eap-countries-widget-item-content">
+                                    <p><?php echo esc_html($country['country_name']); ?></p>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                    </div>
+                    <div class="eap-countries-widget-mobile-row-accordion">
+                    <?php foreach ($twoCountry as $country) : ?>
+                        <div id="country_accordion_<?php echo esc_attr($country['country_id']); ?>" class="country-accordion">
+                            <p><?php echo esc_html($country['country_description']); ?></p>
+                            <a href="<?php echo $country['country_link'] ?>" target="_blank">
+                                <?php echo __('Read More', 'countries'); ?>
+                            </a>
+                        </div>
+                    <?php endforeach; ?>
+                    </div>
+                <?php }?>
             </div>
         </div>
         <?php

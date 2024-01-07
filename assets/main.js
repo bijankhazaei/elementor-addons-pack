@@ -1,5 +1,6 @@
 window.addEventListener('elementor/frontend/init', (e) => {
     const countries = document.querySelectorAll('.eap-countries-widget-item');
+    const countriesInMobile = document.querySelectorAll('.eap-widget-item-mobile');
     const mapContainer = document.getElementById("mapContainer");
     let modal = null;
     let selectedPath = null;
@@ -36,6 +37,22 @@ window.addEventListener('elementor/frontend/init', (e) => {
             countryId = null;
 
             selectedPath.classList.remove('active');
+        })
+    });
+
+    countriesInMobile.forEach(country => {
+        let countryId = null;
+
+        country.addEventListener('click', () => {
+            countryId = country.getAttribute('data-country_id')
+            const countryAccordion = document.getElementById('country_accordion_' + countryId);
+            const allCountryAccordions = document.querySelectorAll('.country-accordion');
+            country.classList.toggle('active');
+            countryAccordion.classList.toggle('active');
+            allCountryAccordions.forEach(accordion => {
+                if (accordion.id === countryAccordion.id) return;
+                accordion.classList.remove('active');
+            })
         })
     });
 })

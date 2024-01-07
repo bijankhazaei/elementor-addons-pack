@@ -123,8 +123,8 @@ class Country_News_Widget extends \Elementor\Widget_Base
             <h3 class="title">
                 <?php echo $settings['title']; ?>
             </h3>
-            <div id="navigationWrapper" class="navigation-wrapper"  data-sliders="<?php echo count($settings['countries_tab'])?>">
-                <div id="eapCountrySlider" class="keen-slider">
+            <div id="navigationWrapper" class="navigation-wrapper">
+                <div id="eapCountrySlider" class="keen-slider" data-sliders="<?php echo count($settings['countries_tab'])?>">
                     <?php $i = 1;
                     foreach ($settings['countries_tab'] as $country) :
                         $template_id = $country['template_selector'] ?? 0;
@@ -139,10 +139,9 @@ class Country_News_Widget extends \Elementor\Widget_Base
                         <div class="keen-slider__slide number-slide<?php echo $i . ' ' . $selected ?>"
                              data-selected="<?php echo $selected; ?>">
 
-                            <img src="<?php echo $flag; ?>"
-                                 alt="<?php echo $countryObject->name; ?>">
-
                             <a href="<?php echo home_url($wp->request); ?>/?template=<?php echo $template_id; ?>">
+                                <img src="<?php echo $flag; ?>"
+                                     alt="<?php echo $countryObject->name; ?>">
                                 <h2><?php echo $countryObject->name; ?></h2>
                             </a>
                         </div>
