@@ -126,14 +126,16 @@
                             .eap-countries-item-inner {
                                 background-color: #D4CEC5;
                                 position: relative;
+
                                 &:after {
                                     content: '';
                                     position: absolute;
-                                    width:12px;
-                                    height:8px;
+                                    width: 12px;
+                                    height: 8px;
                                     bottom: -8px;
                                     left: 16px;
-                                    background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iOCIgdmlld0JveD0iMCAwIDEyIDgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMTIgLTEuOTA3MzVlLTA2TDYgOEwtNi45OTM4MmUtMDcgLTguNTgyNzVlLTA3QzguMDg1MTEgLTEuNTY1MWUtMDYgMy45MTQ4OSAtMS4yMDA1M2UtMDYgMTIgLTEuOTA3MzVlLTA2WiIgZmlsbD0iI0Q0Q0VDNSIvPgo8L3N2Zz4K")                                }
+                                    background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iOCIgdmlld0JveD0iMCAwIDEyIDgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMTIgLTEuOTA3MzVlLTA2TDYgOEwtNi45OTM4MmUtMDcgLTguNTgyNzVlLTA3QzguMDg1MTEgLTEuNTY1MWUtMDYgMy45MTQ4OSAtMS4yMDA1M2UtMDYgMTIgLTEuOTA3MzVlLTA2WiIgZmlsbD0iI0Q0Q0VDNSIvPgo8L3N2Zz4K")
+                                }
                             }
                         }
 
@@ -173,6 +175,7 @@
                         overflow: hidden;
                         transition: height 0.5s, opacity 0.5s;
                         color: #344A86;
+
                         a {
                             color: #344A86;
                             float: inline-end;
@@ -189,10 +192,14 @@
     }
 }
 
+
+.eap-countries-page-widget {
+    background-color: #344A86;
+}
+
 .eap-countries-page-widget,
 .eap-countries-news-widget {
     font-family: "YekanBakhFaNum-Regular", Sans-serif, serif;
-    background-color: #344A86;
     padding: 48px 0;
 
     h3.title {
@@ -203,28 +210,40 @@
     }
 
     .keen-slider__slide {
-        height: 82px;
+        min-height: 100px;
         display: flex;
         align-items: center;
         justify-content: center;
-        border-bottom: 5px solid rgba(225, 221, 214, 0.41);
+        border-bottom: 10px solid rgba(225, 221, 214, 0.41);
         flex-flow: column;
 
-        &.selected {
-            border-bottom: 5px solid #E1DDD6;
-        }
-
-        a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-flow: column;
-        }
-
         h2 {
-            color: #fff;
-            font-size: 16px;
-            font-weight: bold;
+            color: #E1DDD6;
+            font-size: 25px;
+            font-weight: 500;
+        }
+
+        img {
+            width: 50px;
+            margin: 8px;
+            border-radius: 5px;
+        }
+
+        &.selected {
+            border-bottom: 10px solid #E1DDD6;
+
+            h2 {
+                color: #E1DDD6;
+                font-size: 25px;
+                font-weight: 500;
+            }
+
+            img {
+                margin: 0;
+                width: 66px;
+                border: 1px solid #fff;
+                padding: 8px;
+            }
         }
     }
 
@@ -244,13 +263,13 @@
     }
 
     .arrow--left {
-        left: 5px;
+        left: 10%;
         background-image: url("data:image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' %3E%3Cpath d='M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z'  fill='%23e1ddd669'  %3E%3C/path%3E%3C/svg%3E");
     }
 
     .arrow--right {
         left: auto;
-        right: 5px;
+        right: 10%;
         background-image: url("data:image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg'  viewBox='0 0 24 24' %3E%3Cpath d='M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z' fill='%23e1ddd669'  %3E%3C/path%3E%3C/svg%3E");
     }
 
@@ -270,10 +289,10 @@
 
         .eap-country-news-content-inner {
             display: none;
-            opacity:0;
+            opacity: 0;
             transition: opacity 0.5s ease;
 
-            &.active {
+            &.selected {
                 display: block;
                 opacity: 1;
             }
@@ -283,6 +302,7 @@
 
 #countries {
     font-family: "YekanBakhFaNum-Regular", Sans-serif, serif;
+
     path {
         &.active {
             fill: #0A1A3D;
@@ -290,3 +310,13 @@
     }
 }
 
+
+div#navigationWrapper {
+    /* width: 80vw; */
+    display: flex;
+    justify-content: center;
+}
+
+div#eapCountrySlider {
+    width: 80%;
+}

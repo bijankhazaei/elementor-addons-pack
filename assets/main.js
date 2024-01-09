@@ -67,18 +67,23 @@ window.addEventListener('elementor/frontend/init', (e) => {
 const countryNewsTabLinks = document.querySelectorAll('.eap-country-news-tab-link');
 
 countryNewsTabLinks.forEach(link => {
-    console.log(link);
     link.addEventListener('click', (e) => {
         e.preventDefault();
         const target = e.currentTarget.getAttribute('href');
         const targetElement = document.querySelector(target);
         const allTabs = document.querySelectorAll('.eap-country-news-tab');
 
-        allTabs.forEach(tab => {
-            tab.classList.remove('active');
+        countryNewsTabLinks.forEach(link => {
+            link.classList.remove('selected');
         })
 
-        targetElement.classList.add('active');
+        e.currentTarget.classList.add('selected');
+
+        allTabs.forEach(tab => {
+            tab.classList.remove('selected');
+        })
+
+        targetElement.classList.add('selected');
     })
 })
 
@@ -141,12 +146,19 @@ function navigation(slider) {
 
     function updateClasses() {
         const slide = slider.track.details.rel;
-        const slideLength = slider.track.details.slides.length;
-        console.log(slider);
+        console.log('slide', slide);
+        console.log("Slider Length", slider.track.details.slides.length)
+        console.log("math", slider.track.details.slides.length - Math.round(perPage))
+        console.log("perPage", perPage)
 
-        slide === slider.track.details.slides.length - Math.ceil(perPage)
-            ? arrowLeft.classList.add("arrow--disabled")
-            : arrowLeft.classList.remove("arrow--disabled")
+        if (perPage <= 3) {
+            arrowLeft.classList.add("arrow--disabled")
+        } else  {
+            slide === Math.ceil(slider.track.details.slides.length / Math.round(perPage))
+                ? arrowLeft.classList.add("arrow--disabled")
+                : arrowLeft.classList.remove("arrow--disabled")
+        }
+
 
         slide === 0
             ? arrowRight.classList.add("arrow--disabled")
