@@ -1,73 +1,276 @@
 .eap-countries-widget {
-    display: flex;
-    flex-flow: row;
-    align-content: center;
-    justify-content: space-around;
-    .map-container {
-        position: relative;
-        .country-modal {
-            opacity: 0;
-            display: none;
-            position: absolute;
-            background-color: #E1DDD6;
-            border: 8px solid #344A86;
-            z-index: 1000;
-            padding: 12px;
+    font-family: "YekanBakhFaNum-Regular", Sans-serif, serif;
 
-            .modal-title {
-                display: flex;
-                justify-content: start;
-                align-items: center;
-                min-width: 156px;
-                p {
-                    margin: 0;
+    @media (min-width: 768px) {
+        &.mobile {
+            display: none;
+        }
+
+        &.desktop {
+            display: flex;
+            flex-flow: row;
+            align-content: center;
+            justify-content: space-around;
+
+            .map-container {
+                position: relative;
+
+                .country-modal {
+                    opacity: 0;
+                    display: none;
+                    position: absolute;
+                    background-color: #E1DDD6;
+                    border: 8px solid #344A86;
+                    z-index: 1000;
+                    padding: 12px;
+
+                    .modal-title {
+                        display: flex;
+                        justify-content: start;
+                        align-items: center;
+                        min-width: 156px;
+
+                        p {
+                            margin: 0;
+                        }
+
+                        img {
+                            width: 24px;
+                            height: 24px;
+                            margin-left: 8px
+                        }
+                    }
                 }
-                img {
-                    width: 24px;
-                    height: 24px;
-                    margin-left: 8px
+            }
+
+            .eap-countries-widget-content {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(14, 1fr);
+                grid-column-gap: 8px;
+                grid-row-gap: 8px;
+
+                .eap-countries-widget-item {
+                    &.active {
+                        background-color: #eee;
+
+                        .eap-countries-item-inner {
+                            &.hover {
+                                display: flex;
+                            }
+
+                            &.normal {
+                                display: none;
+                            }
+                        }
+                    }
+                ;
+
+                    min-width: 15vw;
+                    min-height: 50px;
+
+                    .eap-countries-item-inner {
+                        display: flex;
+                        justify-content: start;
+                        align-items: center;
+                        background-color: #E1DDD6;
+                        width: 100%;
+                        height: 100%;
+
+                        &.hover {
+                            display: none;
+                            justify-content: center;
+                        }
+
+
+                        .eap-countries-widget-item-flag {
+                            width: 32px;
+                            height: 32px;
+                            align-items: center;
+                            display: flex;
+                            margin: 0 8px;
+                        }
+
+                        .eap-countries-widget-item-content {
+                            p {
+                                margin: 0;
+                            }
+                        }
+                    }
                 }
             }
         }
     }
 
-    .eap-countries-widget-content {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(14, 1fr);
-        grid-column-gap: 8px;
-        grid-row-gap: 8px;
-        .eap-countries-widget-item {
-            &.active {
-                background-color: #eee;
-            };
+    @media (max-width: 768px) {
+        &.desktop {
+            display: none;
+        }
 
+        &.mobile {
             display: flex;
-            justify-content: start;
-            align-items: center;
-            background-color: #E1DDD6;
-            min-width: 10vw;
-            .eap-countries-widget-item-flag {
-                width: 32px;
-                height: 32px;
-                align-items: center;
-                display: flex;
-                margin: 0 8px;
-            }
-            .eap-countries-widget-item-content {
-                p {
-                    margin: 0;
+            flex-flow: row;
+            align-content: center;
+            justify-content: space-around;
+
+            .eap-countries-widget-content {
+                width: 100%;
+
+                .eap-countries-widget-mobile-row {
+                    display: flex;
+                    justify-content: space-between;
+                    margin-bottom: 16px;
+
+                    .eap-countries-widget-item {
+                        &.active-mobile {
+                            .eap-countries-item-inner {
+                                background-color: #D4CEC5;
+                                position: relative;
+                                &:after {
+                                    content: '';
+                                    position: absolute;
+                                    width:12px;
+                                    height:8px;
+                                    bottom: -8px;
+                                    left: 16px;
+                                    background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iOCIgdmlld0JveD0iMCAwIDEyIDgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMTIgLTEuOTA3MzVlLTA2TDYgOEwtNi45OTM4MmUtMDcgLTguNTgyNzVlLTA3QzguMDg1MTEgLTEuNTY1MWUtMDYgMy45MTQ4OSAtMS4yMDA1M2UtMDYgMTIgLTEuOTA3MzVlLTA2WiIgZmlsbD0iI0Q0Q0VDNSIvPgo8L3N2Zz4K")                                }
+                            }
+                        }
+
+                        min-width: 45vw;
+                        min-height: 50px;
+
+                        .eap-countries-item-inner {
+                            display: flex;
+                            justify-content: start;
+                            align-items: center;
+                            background-color: #E1DDD6;
+                            width: 100%;
+                            height: 100%;
+
+
+                            .eap-countries-widget-item-flag {
+                                width: 32px;
+                                height: 32px;
+                                align-items: center;
+                                display: flex;
+                                margin: 0 8px;
+                            }
+
+                            .eap-countries-widget-item-content {
+                                p {
+                                    margin: 0;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .eap-countries-widget-mobile-row-accordion {
+                    .country-accordion {
+                        height: 0;
+                        opacity: 0;
+                        overflow: hidden;
+                        transition: height 0.5s, opacity 0.5s;
+                        color: #344A86;
+                        a {
+                            color: #344A86;
+                            float: inline-end;
+                        }
+
+                        &.active {
+                            height: 100px;
+                            opacity: 1;
+                        }
+                    }
                 }
             }
         }
     }
 }
 
+.eap-countries-page-widget,
+.eap-countries-news-widget {
+    font-family: "YekanBakhFaNum-Regular", Sans-serif, serif;
+    background-color: #344A86;
+    padding: 48px 0;
+
+    h3.title {
+        color: #fff;
+        font-size: 35px;
+        text-align: center;
+        margin-bottom: 48px;
+    }
+
+    .keen-slider__slide {
+        height: 82px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-bottom: 5px solid rgba(225, 221, 214, 0.41);
+        flex-flow: column;
+
+        &.selected {
+            border-bottom: 5px solid #E1DDD6;
+        }
+
+        a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-flow: column;
+        }
+
+        h2 {
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+        }
+    }
+
+    .navigation-wrapper {
+        position: relative;
+    }
+
+    .arrow {
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        -webkit-transform: translateY(-50%);
+        fill: #fff;
+        cursor: pointer;
+    }
+
+    .arrow--left {
+        left: 5px;
+        background-image: url("data:image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' %3E%3Cpath d='M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z'  fill='%23e1ddd669'  %3E%3C/path%3E%3C/svg%3E");
+    }
+
+    .arrow--right {
+        left: auto;
+        right: 5px;
+        background-image: url("data:image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg'  viewBox='0 0 24 24' %3E%3Cpath d='M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z' fill='%23e1ddd669'  %3E%3C/path%3E%3C/svg%3E");
+    }
+
+    .arrow--disabled.arrow--left {
+        display: none;
+        background-image: url("data:image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg' fill='grey' viewBox='0 0 24 24' %3E%3Cpath d='M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z' %3E%3C/path%3E%3C/svg%3E");
+    }
+
+    .arrow--disabled.arrow--right {
+        display: none;
+        background-image: url("data:image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg' fill='grey' viewBox='0 0 24 24' %3E%3Cpath d='M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z'%3E%3C/path%3E%3C/svg%3E");
+    }
+}
+
 #countries {
-     path {
-         &.active {
-             fill: #0A1A3D;
-         }
-     }
+    font-family: "YekanBakhFaNum-Regular", Sans-serif, serif;
+    path {
+        &.active {
+            fill: #0A1A3D;
+        }
+    }
 }
 

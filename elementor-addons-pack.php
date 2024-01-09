@@ -10,7 +10,6 @@
  * Elementor Pro tested up to: x.x.x
  */
 
-
 if (!defined('ABSPATH')) exit; // Exit if accessed directly
 
 
@@ -34,12 +33,19 @@ if (!defined('EAP_CONTROLS_DIR')) {
     define('EAP_CONTROLS_DIR', EAP_DIR . 'includes/controls/');
 }
 
+if(!defined('EAP_ACF_DIR')){
+    define('EAP_ACF_DIR', EAP_DIR . 'includes/acf/');
+}
 
-function elementor_test_addon()
+if(!defined('EAP_ACF_URL')){
+    define('EAP_ACF_URL', EAP_URL . 'includes/acf/');
+}
+
+
+function elementor_test_addon(): void
 {
     require_once EAP_DIR . 'includes/class-elementor-addons-pack.php';
     \Elementor_Addons_Pack\Elementor_Addons_Pack::get_instance();
-
 }
 
 add_action('plugins_loaded', 'elementor_test_addon');
