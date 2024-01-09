@@ -64,6 +64,24 @@ window.addEventListener('elementor/frontend/init', (e) => {
     });
 })
 
+const countryNewsTabLinks = document.querySelectorAll('.eap-country-news-tab-link');
+
+countryNewsTabLinks.forEach(link => {
+    console.log(link);
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const target = e.currentTarget.getAttribute('href');
+        const targetElement = document.querySelector(target);
+        const allTabs = document.querySelectorAll('.eap-country-news-tab');
+
+        allTabs.forEach(tab => {
+            tab.classList.remove('active');
+        })
+
+        targetElement.classList.add('active');
+    })
+})
+
 const isMobile = window.matchMedia("only screen and (max-width: 768px)").matches;
 
 console.log('isMobile', isMobile)

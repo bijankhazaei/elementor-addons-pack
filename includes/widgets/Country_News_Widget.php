@@ -139,7 +139,7 @@ class Country_News_Widget extends \Elementor\Widget_Base
                         <div class="keen-slider__slide number-slide<?php echo $i . ' ' . $selected ?>"
                              data-selected="<?php echo $selected; ?>">
 
-                            <a href="<?php echo home_url($wp->request); ?>/?template=<?php echo $template_id; ?>">
+                            <a href="<?php echo '#newsTemplateInner'. $countryObject->term_id; ?>" class="eap-country-news-tab-link">
                                 <img src="<?php echo $flag; ?>"
                                      alt="<?php echo $countryObject->name; ?>">
                                 <h2><?php echo $countryObject->name; ?></h2>
@@ -150,14 +150,21 @@ class Country_News_Widget extends \Elementor\Widget_Base
                 </div>
             </div>
             <div class="eap-countries-news-widget-content">
-                <?php
-                // PHPCS - should not be escaped.
-                if ('publish' !== get_post_status($queryVar)) {
-                    echo '<div class="error">Template Not Found</div>';
-                }
+                <?php $i = 0; foreach ($settings['countries_tab'] as $country) {
+                    $countryObject =  get_term_by('id', $country['country'], 'category');
+                    $template_id = $country['template_selector'] ?? 0;
+                    ?>
+                    <div class="eap-country-news-content-inner eap-country-news-tab <?php echo $i == 0 ? 'active' : '' ?>"
+                         id="<?php echo 'newsTemplateInner'. $countryObject->term_id; ?>">
+                        <?php
+                        if ('publish' !== get_post_status($queryVar)) {
+                            echo '<div class="error">Template Not Found</div>';
+                        }
 
-                echo Plugin::elementor()->frontend->get_builder_content_for_display($queryVar); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-                ?>
+                        echo Plugin::elementor()->frontend->get_builder_content_for_display($template_id); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+                        ?>
+                    </div>
+                <?php $i++; } ?>
             </div>
         </div>
         <?php
