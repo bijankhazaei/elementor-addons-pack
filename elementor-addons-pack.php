@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Elementor Addons Pack
  * Description: Elementor Addons Pack Plugin
- * Version: 1.0.0
+ * Version: 1.0.2
  * Author: Bijan Khazaei
  * Author URI:
  * Text Domain: elementor-addons-pack
