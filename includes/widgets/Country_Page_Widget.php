@@ -121,7 +121,7 @@ class Country_Page_Widget extends \Elementor\Widget_Base
                         $countryObject = get_term_by('id', $country['country'], 'category');
 
                         $selected = $queryVar == $template_id ? 'selected' : '';
-                        $flag = EAP_URL . 'assets/flag.png';
+                        $flag = get_field('country_flag', $countryObject)['url'] ?? EAP_URL . 'assets/flag.png';
                         ?>
                         <div class="keen-slider__slide number-slide<?php echo $i . ' ' . $selected ?>"
                              data-selected="<?php echo $selected; ?>">

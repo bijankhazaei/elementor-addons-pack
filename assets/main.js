@@ -21,7 +21,7 @@ window.addEventListener('elementor/frontend/init', (e) => {
             if (x < mapContainer.offsetWidth / 4) {
                 modal.style.left = width + 50 + "px";
             } else {
-                modal.style.left = x - 200 + "px";
+                modal.style.left = x - 250 + "px";
             }
 
             modal.style.top = y + "px";

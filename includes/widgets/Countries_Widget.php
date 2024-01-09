@@ -63,9 +63,15 @@ class Countries_Widget extends Widget_Base
                         'default' => __('Country Name', 'elementor-addons-pack'),
                     ],
                     [
+                        'name'    => 'country_construct',
+                        'label'   => __('Country Construct', 'elementor-addons-pack'),
+                        'type'    => Controls_Manager::TEXTAREA,
+                        'default' => __('Country Construct', 'elementor-addons-pack'),
+                    ],
+                    [
                         'name'    => 'country_description',
                         'label'   => __('Country Description', 'elementor-addons-pack'),
-                        'type'    => Controls_Manager::TEXTAREA,
+                        'type'    => Controls_Manager::WYSIWYG,
                         'default' => __('Country Description', 'elementor-addons-pack'),
                     ],
                     [
@@ -146,6 +152,7 @@ class Countries_Widget extends Widget_Base
                             "MG" => "Madagascar",
                             "MK" => "Macedonia",
                             "ML" => "Mali",
+                            "MOR" => "Morisica",
                             "MX" => "Mexico",
                             "MY" => "Malaysia",
                             "NL" => "Netherlands",
@@ -208,7 +215,7 @@ class Countries_Widget extends Widget_Base
                 <?php foreach ($settings['countries'] as $country) : ?>
                     <div class="eap-countries-widget-item" data-country_id="<?php echo esc_attr($country['country_id']); ?>">
                         <div class="eap-countries-item-inner hover">
-                            <a href="<?php echo $country['country_link'] ?>"
+                            <a href="<?php echo $country['country_link']['url'] ?? '#' ?>"
                                target="_blank"
                                class="mouse-over-link">
                                 <?php echo sprintf(__('Read About %s' , 'countries'), esc_attr($country['country_name']))  ?>
@@ -237,7 +244,7 @@ class Countries_Widget extends Widget_Base
                                 <p><?php echo esc_html($country['country_name']); ?></p>
                             </div>
                             <div class="eap-countries-widget-item-content">
-                                <p><?php echo esc_html($country['country_description']); ?></p>
+                                <?php echo $country['country_description']; ?>
                             </div>
                         </div>
                     <?php endforeach; ?>
