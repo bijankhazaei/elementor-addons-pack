@@ -10,7 +10,6 @@
  * Elementor Pro tested up to: x.x.x
  */
 
-
 if (!defined('ABSPATH')) exit; // Exit if accessed directly
 
 

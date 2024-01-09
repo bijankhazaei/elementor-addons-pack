@@ -1,4 +1,6 @@
 .eap-countries-widget {
+    font-family: "YekanBakhFaNum-Regular", Sans-serif, serif;
+
     @media (min-width: 768px) {
         &.mobile {
             display: none;
@@ -120,8 +122,19 @@
                     margin-bottom: 16px;
 
                     .eap-countries-widget-item {
-                        &.active {
-
+                        &.active-mobile {
+                            .eap-countries-item-inner {
+                                background-color: #D4CEC5;
+                                position: relative;
+                                &:after {
+                                    content: '';
+                                    position: absolute;
+                                    width:12px;
+                                    height:8px;
+                                    bottom: -8px;
+                                    left: 16px;
+                                    background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iOCIgdmlld0JveD0iMCAwIDEyIDgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMTIgLTEuOTA3MzVlLTA2TDYgOEwtNi45OTM4MmUtMDcgLTguNTgyNzVlLTA3QzguMDg1MTEgLTEuNTY1MWUtMDYgMy45MTQ4OSAtMS4yMDA1M2UtMDYgMTIgLTEuOTA3MzVlLTA2WiIgZmlsbD0iI0Q0Q0VDNSIvPgo8L3N2Zz4K")                                }
+                            }
                         }
 
                         min-width: 45vw;
@@ -155,12 +168,19 @@
 
                 .eap-countries-widget-mobile-row-accordion {
                     .country-accordion {
-                        display: none;
                         height: 0;
+                        opacity: 0;
+                        overflow: hidden;
+                        transition: height 0.5s, opacity 0.5s;
+                        color: #344A86;
+                        a {
+                            color: #344A86;
+                            float: inline-end;
+                        }
 
                         &.active {
-                            display: block;
-                            height: 100%
+                            height: 100px;
+                            opacity: 1;
                         }
                     }
                 }
@@ -171,6 +191,7 @@
 
 .eap-countries-page-widget,
 .eap-countries-news-widget {
+    font-family: "YekanBakhFaNum-Regular", Sans-serif, serif;
     background-color: #344A86;
     padding: 48px 0;
 
@@ -224,13 +245,13 @@
 
     .arrow--left {
         left: 5px;
-        background-image: url("data:image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' %3E%3Cpath d='M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z' %3E%3C/path%3E%3C/svg%3E");
+        background-image: url("data:image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' %3E%3Cpath d='M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z'  fill='%23e1ddd669'  %3E%3C/path%3E%3C/svg%3E");
     }
 
     .arrow--right {
         left: auto;
         right: 5px;
-        background-image: url("data:image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg'  viewBox='0 0 24 24' %3E%3Cpath d='M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z'%3E%3C/path%3E%3C/svg%3E");
+        background-image: url("data:image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg'  viewBox='0 0 24 24' %3E%3Cpath d='M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z' fill='%23e1ddd669'  %3E%3C/path%3E%3C/svg%3E");
     }
 
     .arrow--disabled.arrow--left {
@@ -245,6 +266,7 @@
 }
 
 #countries {
+    font-family: "YekanBakhFaNum-Regular", Sans-serif, serif;
     path {
         &.active {
             fill: #0A1A3D;

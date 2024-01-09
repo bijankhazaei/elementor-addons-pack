@@ -43,11 +43,18 @@ window.addEventListener('elementor/frontend/init', (e) => {
     countriesInMobile.forEach(country => {
         let countryId = null;
 
-        country.addEventListener('click', () => {
+        country.addEventListener('click', (e) => {
+            console.log(e);
             countryId = country.getAttribute('data-country_id')
             const countryAccordion = document.getElementById('country_accordion_' + countryId);
             const allCountryAccordions = document.querySelectorAll('.country-accordion');
-            country.classList.toggle('active');
+
+            countriesInMobile.forEach(country => {
+                country.classList.remove('active-mobile');
+            })
+
+            e.currentTarget.classList.toggle('active-mobile');
+
             countryAccordion.classList.toggle('active');
             allCountryAccordions.forEach(accordion => {
                 if (accordion.id === countryAccordion.id) return;
@@ -57,6 +64,25 @@ window.addEventListener('elementor/frontend/init', (e) => {
     });
 })
 
+const isMobile = window.matchMedia("only screen and (max-width: 768px)").matches;
+
+console.log('isMobile', isMobile)
+
+const eapCountrySliders = document.getElementById("eapCountrySlider").getAttribute('data-sliders')
+
+let perPage = isMobile ? 3.5 : 7.5;
+
+if( eapCountrySliders < 8 && eapCountrySliders > 3) {
+    perPage = isMobile ? 3.5 : eapCountrySliders - 0.5
+}
+
+if ( eapCountrySliders < 4) {
+    perPage = 3
+}
+
+console.log('perPage', perPage);
+
+console.log('eapCountrySliders', eapCountrySliders);
 // Create a new instance of KeenSlider
 function navigation(slider) {
     let wrapper, arrowLeft, arrowRight
@@ -97,9 +123,10 @@ function navigation(slider) {
 
     function updateClasses() {
         const slide = slider.track.details.rel;
-        console.log(slide);
-        console.log(slider.track.details.slides.length);
-        slide === slider.track.details.slides.length - 7
+        const slideLength = slider.track.details.slides.length;
+        console.log(slider);
+
+        slide === slider.track.details.slides.length - Math.ceil(perPage)
             ? arrowLeft.classList.add("arrow--disabled")
             : arrowLeft.classList.remove("arrow--disabled")
 
@@ -128,23 +155,9 @@ function navigation(slider) {
     })
 }
 
-const eapCountrySliders = document.getElementById("eapCountrySlider").getAttribute('data-sliders')
 
-console.log(eapCountrySliders);
 
 if (eapCountrySliders > 1) {
-    let perPage = 7.5;
-
-    if( eapCountrySliders < 7 && eapCountrySliders > 3) {
-        perPage = Math.ceil(eapCountrySliders / 2)
-    }
-
-    if ( eapCountrySliders < 4) {
-        perPage = Math.ceil(eapCountrySliders / 1)
-    }
-
-    console.log(perPage);
-
     new KeenSlider("#eapCountrySlider", {
         loop: false,
         rtl: true,
