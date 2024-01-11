@@ -142,8 +142,10 @@ class Country_News_Widget extends \Elementor\Widget_Base
                            class="keen-slider__slide number-slide<?php echo $i . ' ' . $selected ?> eap-country-news-tab-link"
                            data-selected="<?php echo $selected; ?>">
 
-                            <img src="<?php echo $flag; ?>"
-                                 alt="<?php echo $countryObject->name; ?>">
+                            <div class="flag-wrapper">
+                                <img src="<?php echo $flag; ?>"
+                                     alt="<?php echo $countryObject->name; ?>">
+                            </div>
                             <h2><?php echo $countryObject->name ?? ''; ?></h2>
                         </a>
 

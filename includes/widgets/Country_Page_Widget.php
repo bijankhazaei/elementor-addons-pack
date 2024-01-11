@@ -127,8 +127,10 @@ class Country_Page_Widget extends \Elementor\Widget_Base
                              data-selected="<?php echo $selected; ?>">
 
                             <a href="<?php echo home_url($wp->request); ?>/?template=<?php echo $template_id; ?>">
-                                <img src="<?php echo $flag; ?>"
-                                     alt="<?php echo $countryObject->name; ?>">
+                                <div class="flag-wrapper">
+                                    <img src="<?php echo $flag; ?>"
+                                         alt="<?php echo $countryObject->name; ?>">
+                                </div>
                                 <h2><?php echo $countryObject->name; ?></h2>
                             </a>
                         </div>
