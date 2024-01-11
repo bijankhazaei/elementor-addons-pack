@@ -2,6 +2,10 @@ window.addEventListener('elementor/frontend/init', (e) => {
     const countries = document.querySelectorAll('.eap-countries-widget-item');
     const countriesInMobile = document.querySelectorAll('.eap-widget-item-mobile');
     const mapContainer = document.getElementById("mapContainer");
+    const countriesG = document.getElementById("countries");
+    const {y} = countriesG.getBoundingClientRect();
+    const adjustedYMap = y + window.scrollY;
+
     let modal = null;
     let selectedPath = null;
 
@@ -16,17 +20,26 @@ window.addEventListener('elementor/frontend/init', (e) => {
 
             selectedPath = document.getElementById(countryId);
             selectedPath.classList.add('active');
-            const {x, y, width, height} = selectedPath.getBBox();
+
+            const {x, y, width, height} = selectedPath.getBoundingClientRect();
+            const scrollX = window.scrollX;
+            const scrollY = window.scrollY;
+
+            const adjustedX = x + scrollX;
+            const adjustedY = y + scrollY;
 
             if (x < mapContainer.offsetWidth / 4) {
                 modal.style.left = width + 50 + "px";
             } else {
-                modal.style.left = x - 200 + "px";
+                modal.style.left = adjustedX - width - 250 + "px";
             }
 
-            modal.style.top = y + "px";
+            modal.style.top = adjustedY - adjustedYMap + "px";
             modal.style.display = "block";
             modal.style.opacity = "1";
+
+            console.log('y:', y, 'x:', x, 'adjustedY:', adjustedY, 'scrollY:', scrollY, 'adjustedYMap:', adjustedYMap);
+            //console.log('xMap:', xMap, 'yMap:', yMap, 'widthMap:', widthMap, 'heightMap:', heightMap)
         })
 
         country.addEventListener('mouseout', () => {
@@ -51,6 +64,7 @@ window.addEventListener('elementor/frontend/init', (e) => {
 
             countriesInMobile.forEach(country => {
                 country.classList.remove('active-mobile');
+
             })
 
             e.currentTarget.classList.toggle('active-mobile');
@@ -67,40 +81,33 @@ window.addEventListener('elementor/frontend/init', (e) => {
 const countryNewsTabLinks = document.querySelectorAll('.eap-country-news-tab-link');
 
 countryNewsTabLinks.forEach(link => {
-    console.log(link);
     link.addEventListener('click', (e) => {
         e.preventDefault();
         const target = e.currentTarget.getAttribute('href');
         const targetElement = document.querySelector(target);
         const allTabs = document.querySelectorAll('.eap-country-news-tab');
 
-        allTabs.forEach(tab => {
-            tab.classList.remove('active');
+        countryNewsTabLinks.forEach(link => {
+            link.classList.remove('selected');
         })
 
-        targetElement.classList.add('active');
+        e.currentTarget.classList.add('selected');
+
+        allTabs.forEach(tab => {
+            tab.classList.remove('selected');
+        })
+
+        targetElement.classList.add('selected');
     })
 })
 
 const isMobile = window.matchMedia("only screen and (max-width: 768px)").matches;
 
-console.log('isMobile', isMobile)
-
 const eapCountrySliders = document.getElementById("eapCountrySlider").getAttribute('data-sliders')
 
-let perPage = isMobile ? 3.5 : 7.5;
+let perPage = isMobile ? 3.5 : (eapCountrySliders < 7 ? eapCountrySliders : 7);
 
-if( eapCountrySliders < 8 && eapCountrySliders > 3) {
-    perPage = isMobile ? 3.5 : eapCountrySliders - 0.5
-}
 
-if ( eapCountrySliders < 4) {
-    perPage = 3
-}
-
-console.log('perPage', perPage);
-
-console.log('eapCountrySliders', eapCountrySliders);
 // Create a new instance of KeenSlider
 function navigation(slider) {
     let wrapper, arrowLeft, arrowRight
@@ -141,12 +148,14 @@ function navigation(slider) {
 
     function updateClasses() {
         const slide = slider.track.details.rel;
-        const slideLength = slider.track.details.slides.length;
-        console.log(slider);
 
-        slide === slider.track.details.slides.length - Math.ceil(perPage)
-            ? arrowLeft.classList.add("arrow--disabled")
-            : arrowLeft.classList.remove("arrow--disabled")
+        if(slider.track.details.slides.length <= Math.round(perPage)) {
+            arrowLeft.classList.add("arrow--disabled")
+        }else  {
+            slide === Math.ceil(slider.track.details.slides.length / Math.round(perPage))
+                ? arrowLeft.classList.add("arrow--disabled")
+                : arrowLeft.classList.remove("arrow--disabled")
+        }
 
         slide === 0
             ? arrowRight.classList.add("arrow--disabled")
@@ -172,7 +181,6 @@ function navigation(slider) {
         markup(true)
     })
 }
-
 
 
 if (eapCountrySliders > 1) {

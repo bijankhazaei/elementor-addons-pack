@@ -124,7 +124,8 @@ class Country_News_Widget extends \Elementor\Widget_Base
                 <?php echo $settings['title']; ?>
             </h3>
             <div id="navigationWrapper" class="navigation-wrapper">
-                <div id="eapCountrySlider" class="keen-slider" data-sliders="<?php echo count($settings['countries_tab'])?>">
+                <div id="eapCountrySlider" class="keen-slider"
+                     data-sliders="<?php echo count($settings['countries_tab']) ?>">
                     <?php $i = 1;
                     foreach ($settings['countries_tab'] as $country) :
                         $template_id = $country['template_selector'] ?? 0;
@@ -134,28 +135,31 @@ class Country_News_Widget extends \Elementor\Widget_Base
                         $countryObject = get_term_by('id', $country['country'], 'category');
 
                         $selected = $queryVar == $template_id ? 'selected' : '';
-                        $flag =  EAP_URL.'assets/flag.png';
-                        ?>
-                        <div class="keen-slider__slide number-slide<?php echo $i . ' ' . $selected ?>"
-                             data-selected="<?php echo $selected; ?>">
 
-                            <a href="<?php echo '#newsTemplateInner'. $countryObject->term_id; ?>" class="eap-country-news-tab-link">
+                        $flag = get_field('country_flag', $countryObject)['url'] ?? EAP_URL . 'assets/flag.png';
+                        ?>
+                        <a href="<?php echo '#newsTemplateInner' . $countryObject->term_id; ?>"
+                           class="keen-slider__slide number-slide<?php echo $i . ' ' . $selected ?> eap-country-news-tab-link"
+                           data-selected="<?php echo $selected; ?>">
+
+                            <div class="flag-wrapper">
                                 <img src="<?php echo $flag; ?>"
                                      alt="<?php echo $countryObject->name; ?>">
-                                <h2><?php echo $countryObject->name; ?></h2>
-                            </a>
-                        </div>
+                            </div>
+                            <h2><?php echo $countryObject->name ?? ''; ?></h2>
+                        </a>
 
                         <?php $i++; endforeach; ?>
                 </div>
             </div>
             <div class="eap-countries-news-widget-content">
-                <?php $i = 0; foreach ($settings['countries_tab'] as $country) {
-                    $countryObject =  get_term_by('id', $country['country'], 'category');
+                <?php $i = 0;
+                foreach ($settings['countries_tab'] as $country) {
+                    $countryObject = get_term_by('id', $country['country'], 'category');
                     $template_id = $country['template_selector'] ?? 0;
                     ?>
-                    <div class="eap-country-news-content-inner eap-country-news-tab <?php echo $i == 0 ? 'active' : '' ?>"
-                         id="<?php echo 'newsTemplateInner'. $countryObject->term_id; ?>">
+                    <div class="eap-country-news-content-inner eap-country-news-tab <?php echo $i == 0 ? 'selected' : '' ?>"
+                         id="<?php echo 'newsTemplateInner' . $countryObject->term_id; ?>">
                         <?php
                         if ('publish' !== get_post_status($queryVar)) {
                             echo '<div class="error">Template Not Found</div>';
@@ -164,7 +168,8 @@ class Country_News_Widget extends \Elementor\Widget_Base
                         echo Plugin::elementor()->frontend->get_builder_content_for_display($template_id); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
                         ?>
                     </div>
-                <?php $i++; } ?>
+                    <?php $i++;
+                } ?>
             </div>
         </div>
         <?php
