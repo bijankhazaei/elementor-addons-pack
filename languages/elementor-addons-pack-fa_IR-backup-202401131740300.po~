@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Elementor Addons Pack\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-01-11 11:45+0000\n"
-"PO-Revision-Date: 2024-01-13 17:40+0000\n"
+"PO-Revision-Date: 2024-01-13 17:38+0000\n"
 "Last-Translator: \n"
 "Language-Team: فارسی\n"
 "Language: fa_IR\n"
@@ -96,7 +96,7 @@ msgid "Enter your title"
 msgstr "عنوان را وارد کنید"
 
 #: includes/widgets/Countries_Widget.php:221
-#, fuzzy, php-format
+#, php-format
 msgid "Read About %s"
 msgstr "درباره %s  بخوانید"
 

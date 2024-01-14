@@ -3,10 +3,10 @@ msgstr ""
 "Project-Id-Version: Elementor Addons Pack\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-01-11 11:45+0000\n"
-"PO-Revision-Date: 2024-01-13 17:40+0000\n"
+"PO-Revision-Date: 2024-01-13 17:06+0000\n"
 "Last-Translator: \n"
-"Language-Team: فارسی\n"
-"Language: fa_IR\n"
+"Language-Team: English (United States)\n"
+"Language: en_US\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -93,16 +93,16 @@ msgstr ""
 
 #: includes/widgets/Country_News_Widget.php:62
 msgid "Enter your title"
-msgstr "عنوان را وارد کنید"
+msgstr ""
 
 #: includes/widgets/Countries_Widget.php:221
-#, fuzzy, php-format
+#, php-format
 msgid "Read About %s"
-msgstr "درباره %s  بخوانید"
+msgstr ""
 
 #: includes/widgets/Countries_Widget.php:278
 msgid "Read More"
-msgstr "بیشتر بدانید"
+msgstr ""
 
 #: includes/widgets/Country_News_Widget.php:86
 #: includes/widgets/Country_Page_Widget.php:76
@@ -119,4 +119,4 @@ msgstr ""
 
 #: includes/widgets/Country_News_Widget.php:59
 msgid "Title"
-msgstr "عنوان"
+msgstr ""

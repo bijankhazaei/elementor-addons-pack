@@ -41,9 +41,14 @@ if(!defined('EAP_ACF_URL')){
     define('EAP_ACF_URL', EAP_URL . 'includes/acf/');
 }
 
-
 function elementor_test_addon(): void
 {
+    load_plugin_textdomain(
+        'elementor-addons-pack',
+        false,
+        dirname( plugin_basename( __FILE__ ) ) . '/languages/'
+    );
+
     require_once EAP_DIR . 'includes/class-elementor-addons-pack.php';
     \Elementor_Addons_Pack\Elementor_Addons_Pack::get_instance();
 }
