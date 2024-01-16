@@ -1,3 +1,7 @@
+a {
+    color: #344A86;
+}
+
 @media (min-width: 768px) {
     .eap-countries-widget {
         font-family: "YekanBakhFaNum-Regular", Sans-serif, serif;
@@ -58,6 +62,21 @@
                             margin-left: 8px
                         }
                     }
+
+                    .eap-countries-widget-item-content {
+                        color: #344A86;
+                        text-align: right;
+                        font-size: 14px;
+                        font-style: normal;
+                        font-weight: 600;
+                        line-height: 22px;
+
+                        ul {
+                            margin-top: 12px;
+                            margin-right: 15px;
+                            padding: 0;
+                        }
+                    }
                 }
             }
 
@@ -83,6 +102,15 @@
                                 opacity: 1;
                                 z-index: 1;
                                 transform: translate(0, 0);
+
+                                a {
+                                    color: #344A86;
+                                    text-align: right;
+                                    font-size: 18px;
+                                    font-style: normal;
+                                    font-weight: 700;
+                                    line-height: 22px;
+                                }
                             }
 
                             &.normal {
@@ -239,18 +267,22 @@
                         transition: max-height 0.5s, opacity 0.5s;
                         color: #344A86;
                         text-align: right;
-                        font-size: 14px;
+                        font-size: 12px;
                         font-style: normal;
-                        font-weight: 600;
-                        line-height: 135%;
+                        font-weight: 700;
+                        line-height: 22px;
+                        padding-bottom: 8px;
 
                         a {
                             color: #344A86;
                             float: inline-end;
-                            font-size: 12px;
-                            font-style: normal;
-                            font-weight: 700;
-                            line-height: 22px;
+                            &:active {
+                                color: #344A86;
+                            }
+
+                            &:focus {
+                                color: #344A86;
+                            }
                         }
 
                         &.active {
@@ -273,6 +305,36 @@
     }
 }
 
+.eap-countries-page-widget {
+    div#eapCountrySlider {
+        width: 80%;
+    }
+
+    .arrow--left {
+        left: 5%;
+        background-image: url("data:image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' %3E%3Cpath d='M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z'  fill='%23e1ddd669'  %3E%3C/path%3E%3C/svg%3E");
+    }
+
+    .arrow--right {
+        left: auto;
+        right: 5%;
+        background-image: url("data:image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg'  viewBox='0 0 24 24' %3E%3Cpath d='M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z' fill='%23e1ddd669'  %3E%3C/path%3E%3C/svg%3E");
+    }
+}
+
+.eap-countries-news-widget {
+    .arrow--left {
+        left: -5%;
+        background-image: url("data:image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' %3E%3Cpath d='M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z'  fill='%23e1ddd669'  %3E%3C/path%3E%3C/svg%3E");
+    }
+
+    .arrow--right {
+        left: auto;
+        right: -5%;
+        background-image: url("data:image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg'  viewBox='0 0 24 24' %3E%3Cpath d='M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z' fill='%23e1ddd669'  %3E%3C/path%3E%3C/svg%3E");
+    }
+}
+
 .eap-countries-page-widget,
 .eap-countries-news-widget {
     .keen-slider__slide {
@@ -291,20 +353,22 @@
 
         h2 {
             color: #E1DDD6;
-            font-size: 16px;
+            font-size: 25px;
             font-style: normal;
-            font-weight: 700;
+            font-weight: 500;
             line-height: normal;
+            margin: 24px 0;
         }
 
         .flag-wrapper {
             img {
-                width: 36px;
+                width: 50px;
                 transition: all 0.3s;
-                border-radius: 0;
+                border-radius: 5px;
             }
-            width: 48px;
-            height: 48px;
+
+            width: 62px;
+            height: 62px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -315,14 +379,6 @@
 
         &.selected {
             border-bottom: 10px solid #E1DDD6;
-
-            h2 {
-                color: #E1DDD6;
-                font-size: 16px;
-                font-style: normal;
-                font-weight: 700;
-                line-height: normal;
-            }
 
             .flag-wrapper {
                 img {
@@ -346,16 +402,6 @@
         cursor: pointer;
     }
 
-    .arrow--left {
-        left: 5%;
-        background-image: url("data:image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' %3E%3Cpath d='M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z'  fill='%23e1ddd669'  %3E%3C/path%3E%3C/svg%3E");
-    }
-
-    .arrow--right {
-        left: auto;
-        right: 5%;
-        background-image: url("data:image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg'  viewBox='0 0 24 24' %3E%3Cpath d='M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z' fill='%23e1ddd669'  %3E%3C/path%3E%3C/svg%3E");
-    }
 
     .arrow--disabled.arrow--left {
         display: none;
@@ -384,6 +430,12 @@
     }
 }
 
+.eap-countries-news-widget {
+    #navigationWrapper {
+        margin-bottom: 50px;
+    }
+}
+
 .eap-countries-page-widget {
     #navigationWrapper {
         background: #40599C;
@@ -394,7 +446,7 @@
 
 .eap-countries-news-widget {
     font-family: "YekanBakhFaNum-Regular", Sans-serif, serif;
-    padding: 48px 0;
+    padding: 12px 0;
 
     h3.title {
         color: #E1DDD6;
@@ -404,7 +456,7 @@
         line-height: normal;
         letter-spacing: -0.96px;
         text-align: center;
-        margin: 96px;
+        margin: 50px 0;
     }
 }
 
@@ -426,12 +478,15 @@
 div#navigationWrapper {
     display: flex;
     justify-content: center;
-    margin-bottom: 116px;
     position: relative;
 }
 
-div#eapCountrySlider {
-    width: 80%;
+@media (min-width: 768px) {
+    .eap-countries-news-widget {
+        div#eapCountrySlider {
+            width: 100%;
+        }
+    }
 }
 
 @media (max-width: 768px) {
@@ -439,3 +494,6 @@ div#eapCountrySlider {
         width: 100%;
     }
 }
+
+
+

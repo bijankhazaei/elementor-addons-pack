@@ -3,7 +3,11 @@ window.addEventListener('elementor/frontend/init', (e) => {
     const countriesInMobile = document.querySelectorAll('.eap-widget-item-mobile');
     const mapContainer = document.getElementById("mapContainer");
     const countriesG = document.getElementById("countries");
-    const {y} = countriesG.getBoundingClientRect();
+    let y = 0;
+    if(countriesG !== null) {
+        y = countriesG.getBoundingClientRect().y;
+    }
+
     const adjustedYMap = y + window.scrollY;
 
     let modal = null;
@@ -37,9 +41,6 @@ window.addEventListener('elementor/frontend/init', (e) => {
             modal.style.top = adjustedY - adjustedYMap + "px";
             modal.style.display = "block";
             modal.style.opacity = "1";
-
-            console.log('y:', y, 'x:', x, 'adjustedY:', adjustedY, 'scrollY:', scrollY, 'adjustedYMap:', adjustedYMap);
-            //console.log('xMap:', xMap, 'yMap:', yMap, 'widthMap:', widthMap, 'heightMap:', heightMap)
         })
 
         country.addEventListener('mouseout', () => {
@@ -57,7 +58,6 @@ window.addEventListener('elementor/frontend/init', (e) => {
         let countryId = null;
 
         country.addEventListener('click', (e) => {
-            console.log(e);
             countryId = country.getAttribute('data-country_id')
             const countryAccordion = document.getElementById('country_accordion_' + countryId);
             const allCountryAccordions = document.querySelectorAll('.country-accordion');
@@ -149,10 +149,10 @@ function navigation(slider) {
     function updateClasses() {
         const slide = slider.track.details.rel;
 
-        if(slider.track.details.slides.length <= Math.round(perPage)) {
+        if (slider.track.details.slides.length <= Math.round(perPage)) {
             arrowLeft.classList.add("arrow--disabled")
-        }else  {
-            slide === Math.ceil(slider.track.details.slides.length / Math.round(perPage))
+        } else {
+            slide === Math.ceil(slider.track.details.slides.length - Math.round(perPage))
                 ? arrowLeft.classList.add("arrow--disabled")
                 : arrowLeft.classList.remove("arrow--disabled")
         }
